@@ -1,0 +1,26 @@
+<template width="1280px" height="720px">
+	<div @data="containerLayout1" lyte-layout="fixed" node-id="containerLayout1">
+		<div @data="containerLayout2" lyte-layout="fixed" node-id="containerLayout2">
+			<div @data="containerLayout6" lyte-layout="fixed" node-id="containerLayout6">
+				<div @data="containerLayout8" lyte-layout="container" node-id="containerLayout8">
+					<lyte-text @data="lyteText1" lt-prop-value="Total count : {{tickets.result.count}}" node-id="lyteText1" group-name="lyte-ui-component"></lyte-text>
+				</div>
+				<div @data="containerLayout9" lyte-layout="container" node-id="containerLayout9">
+					<lyte-search @data="lyteSearch1" lt-prop-appearance="box" lt-prop-query-selector='{"scope":"lyte-tbody","search":"lyte-tr","target":"lyte-tr"}' node-id="lyteSearch1" style="display:block;" group-name="lyte-ui-component"></lyte-search>
+				</div>
+			</div>
+			<div @data="containerLayout7" lyte-layout="container" node-id="containerLayout7">
+				<crm-custom-table @data="crmCustomTable2" cx-prop-content="{{tickets.result.tickets}}" cx-prop-field-type-mapping='{"SingleLine":"text","is_Email_Optout":"boolean","Annual_Revenue":"number","Total_Employees":"number","CF_Picklist":"picklist"}' cx-prop-field-type-mapping-selector="api_name" cx-prop-header='[{"api_name":"contact.lastName","field_label":"Contact","data_type":"text"},{"api_name":"subject","field_label":"Subject","data_type":"text"},{"api_name":"status","field_label":"Status","data_type":"picklist","pick_list_values":[{"actual_value":"Open","display_value":"Open","reference_value":"Open","id":"status_open","type":"used","sequence_number":1},{"actual_value":"In Progress","display_value":"In Progress","reference_value":"In Progress","id":"status_inprogress","type":"used","sequence_number":2},{"actual_value":"Closed","display_value":"Closed","reference_value":"Closed","id":"status_closed","type":"used","sequence_number":3}]},{"api_name":"priority","field_label":"Priority","data_type":"picklist","pick_list_values":[{"actual_value":"High","display_value":"High"},{"actual_value":"Medium","display_value":"Medium"},{"actual_value":"Low","display_value":"Low"}]},{"api_name":"classification","field_label":"Classification","data_type":"picklist","pick_list_values":[{"actual_value":"Feature","display_value":"Feature"},{"actual_value":"Problem","display_value":"Problem"},{"actual_value":"Question","display_value":"Question"},{"actual_value":"Others","display_value":"Others"}]},{"api_name":"channel","field_label":"Channel","data_type":"picklist","pick_list_values":[{"actual_value":"Email","display_value":"Email"},{"actual_value":"Phone","display_value":"Phone"},{"actual_value":"Chat","display_value":"Chat"},{"actual_value":"Portal","display_value":"Portal"}]}]' node-id="crmCustomTable2" group-name="crux-components"></crm-custom-table>
+			</div>
+		</div>
+		<div @data="containerLayout3" lyte-layout="fixed" node-id="containerLayout3">
+			<div @data="containerLayout13" lyte-layout="container" node-id="containerLayout13"></div>
+			<div @data="containerLayout4" lyte-layout="container" node-id="containerLayout4">
+				<lyte-chart @data="lyteChart1" lt-prop-canvas-style='{"theme":"flatui"}' lt-prop-canvas-subtitle="" lt-prop-canvas-title="Tickets by Priority level" lt-prop-chart-xaxis='{"splitLeaves":false,"reversed":false,"show":true,"tickOrient":"outer","tickTransform":"[0,","label":{"fontColor":"#333333","fontFamily":"Roboto,","fontSize":"10px","fontStyle":"normal","fontWeight":"bold","marginBottom":5,"marginLeft":5,"marginRight":5,"marginTop":5,"show":true,"text":"Priority","tooltip":false}}' lt-prop-chart-yaxis='{"label":{"text":"Sum(Sales)"}}' lt-prop-meta-data-axes='{"x":[0],"y":[[1]],"tooltip":[0,1]}' lt-prop-meta-data-columns='[{"dataindex":0,"columnname":"Priority","datatype":"ordinal","ordinal":{"format":{"prefix":"{Priority}: ","arraySeperator":" & "},"tooltipformat":{"prefix":"Ticket Priority - "},"datalabelsformat":{"suffix":" (Ticket)"},"nullformatting":"Not Available"}},{"dataindex":1,"columnname":"Ticket Count","datatype":"numeric","numeric":{"format":{"thousandSeperator":",","decimalPlaces":0,"signEnabled":false}}}]' lt-prop-series-data="{{tickets.result.priorityChartData}}" lt-prop-type="bar" node-id="lyteChart1" group-name="lyte-ui-component"></lyte-chart>
+			</div>
+			<div @data="containerLayout12" lyte-layout="container" node-id="containerLayout12">
+				<lyte-chart @data="lyteChart2" lt-prop-canvas-style='{"theme":"flatui"}' lt-prop-canvas-subtitle="" lt-prop-canvas-title="Tickets by Status" lt-prop-chart-xaxis='{"label":{"text":"Year(Date)"},"ticklabel":{"rotation":"auto"},"axisline":{"color":"transparent"}}' lt-prop-chart-yaxis='{"label":{"text":"Sum(Sales)"}}' lt-prop-meta-data-axes='{"x":[0],"y":[[1]],"tooltip":[0,1]}' lt-prop-meta-data-columns='[{"dataindex":0,"columnname":"Status","datatype":"ordinal","ordinal":{"format":{"suffix":" Status","letterCase":"capitalize","arraySeperator":" / "},"legendformat":{"letterCase":"uppercase"},"nullformatting":"Unknown"}},{"dataindex":1,"columnname":"Count","datatype":"numeric","numeric":{"format":{"thousandSeperator":",","decimalPlaces":0}}}]' lt-prop-series-data="{{tickets.result.statusChartData}}" lt-prop-type="pie" node-id="lyteChart2" group-name="lyte-ui-component"></lyte-chart>
+			</div>
+		</div>
+	</div>
+</template>
